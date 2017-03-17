@@ -26,12 +26,10 @@ We can now implement our model. It only takes one line to define it!
 
     y = tf.nn.softmax(tf.matmul(x, W) + b)
 
-First, we multiply x by W with the expression tf.matmul(x, W). This is flipped from when we multiplied them in our equation, where we had
-
-, as a small trick to deal with x being a 2D tensor with multiple inputs. We then add b, and finally apply tf.nn.softmax.
+First, we multiply x by W with the expression tf.matmul(x, W). This is flipped from when we multiplied them in our equation, where we had, as a small trick to deal with x being a 2D tensor with multiple inputs. We then add b, and finally apply tf.nn.softmax.
 
 That's it. It only took us one line to define our model, after a couple short lines of setup. That isn't because TensorFlow is designed to make a softmax regression particularly easy: it's just a very flexible way to describe many kinds of numerical computations, from machine learning models to physics simulations. And once defined, our model can be run on different devices: your computer's CPU, GPUs, and even phones!
-Training
+<b>Training<b>
 
 In order to train our model, we need to define what it means for the model to be good. Well, actually, in machine learning we typically define what it means for a model to be bad. We call this the cost, or the loss, and it represents how far off our model is from our desired outcome. We try to minimize that error, and the smaller the error margin, the better our model is.
 
@@ -46,9 +44,7 @@ To implement cross-entropy we need to first add a new placeholder to input the c
 
     y_ = tf.placeholder(tf.float32, [None, 10])
 
-Then we can implement the cross-entropy function,
-
-:
+Then we can implement the cross-entropy function:
 
     cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y), reduction_indices=[1]))
 
@@ -64,9 +60,7 @@ In this case, we ask TensorFlow to minimize cross_entropy using the
 gradient descent algorithm
 with a learning rate of 0.5. Gradient descent is a simple procedure, where
 TensorFlow simply shifts each variable a little bit in the direction that
-reduces the cost. But TensorFlow also provides
-many other optimization algorithms
-    using one is as simple as tweaking one line.
+reduces the cost. But TensorFlow also provides many other optimization algorithms using one is as simple as tweaking one line.
 
 What TensorFlow actually does here, behind the scenes, is to add new operations to your graph which implement backpropagation and gradient descent. Then it gives you back a single operation which, when run, does a step of gradient descent training, slightly tweaking your variables to reduce the loss.
 
