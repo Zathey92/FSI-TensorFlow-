@@ -142,6 +142,7 @@ def load_data():
 			combination=[x_input,y_input]
 			out.append(combination)
 	return out
+
 def load_random_data():
 	print("loading random data")
 	x_input=[[0,0],[5,0],[10,0],[8,1],[8,5],[0,5],[10,5],[10,10],[10,15],[3,2],[6,1],[20,5],[20,15],[18,0],[2,1]]
