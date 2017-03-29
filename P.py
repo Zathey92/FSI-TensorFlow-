@@ -158,7 +158,7 @@ def load_random_data():
 def demo():
 
 	X = load_data()
-	X2 = load_random_data()
+
 	print(X[0]) # make sure the data looks right
 
 	NN = Network(2, 30, 1)
